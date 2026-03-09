@@ -1,0 +1,200 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ===== Aveline Luxury Design System ===== */
+:root {
+  /* Gold palette — always available */
+  --gold:        #C6A96B;
+  --gold-light:  #E2C98A;
+  --gold-dark:   #9A7D47;
+  --gold-glow:   rgba(198,169,107,0.30);
+  --gold-glow-sm:rgba(198,169,107,0.10);
+  --ease-luxury: cubic-bezier(0.16, 1, 0.3, 1);
+  --radius:      0.5rem;
+
+  /* Light mode — warm ivory luxury palette per spec */
+  --background:       #F7F2E9;
+  --background2:      #EFE6D8;
+  --foreground:       #1C1C1C;
+  --card:             #FFFFFF;
+  --card-hover:       #F7F2E9;
+  --card-foreground:  #1C1C1C;
+  --muted:            #6E6E6E;
+  --muted-foreground: #A8A8A0;
+  --border:           rgba(198,169,107,0.25);
+  --border-subtle:    rgba(198,169,107,0.10);
+  --popover:          #FFFFFF;
+  --popover-foreground: #1C1C1C;
+  --primary:          #C6A96B;
+  --primary-foreground: #FFFFFF;
+  --secondary:        #F7F2E9;
+  --secondary-foreground: #1C1C1C;
+  --accent:           #C6A96B;
+  --accent-foreground: #FFFFFF;
+  --destructive:      oklch(0.55 0.22 27);
+  --destructive-foreground: oklch(0.98 0.01 27);
+  --input:            rgba(198,169,107,0.15);
+  --ring:             #C6A96B;
+}
+
+/* Dark theme — applied by next-themes via .dark class on <html> */
+.dark {
+  --background:       #121212;
+  --background2:      #1A1A1A;
+  --foreground:       #F3EEE7;
+  --card:             #1C1C1C;
+  --card-hover:       #242424;
+  --card-foreground:  #F3EEE7;
+  --muted:            #888880;
+  --muted-foreground: #555550;
+  --border:           rgba(198,169,107,0.12);
+  --border-subtle:    rgba(255,255,255,0.06);
+  --popover:          #161616;
+  --popover-foreground: #EDE8DF;
+  --primary:          #C6A96B;
+  --primary-foreground: #0D0D0D;
+  --secondary:        #1D1D1D;
+  --secondary-foreground: #EDE8DF;
+  --accent:           #C6A96B;
+  --accent-foreground: #0D0D0D;
+  --destructive:      oklch(0.45 0.20 27);
+  --destructive-foreground: oklch(0.90 0.05 27);
+  --input:            rgba(255,255,255,0.06);
+  --ring:             #C6A96B;
+}
+
+@theme inline {
+  --font-sans: var(--font-cairo), 'Cairo', system-ui, sans-serif;
+  --font-serif: var(--font-playfair), 'Playfair Display', serif;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-gold: var(--gold);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scrollbar-color: #C6A96B var(--background2);
+    scrollbar-width: thin;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4 {
+    @apply text-balance font-serif;
+  }
+
+  ::selection {
+    background: rgba(198, 169, 107, 0.30);
+    color: var(--foreground);
+  }
+}
+
+@layer utilities {
+  /* Gold shimmer text */
+  .text-gold { color: var(--gold); }
+  .text-gold-light { color: var(--gold-light); }
+
+  /* Gold shimmer animation */
+  .gold-shimmer {
+    background: linear-gradient(
+      90deg,
+      var(--gold-dark) 0%,
+      var(--gold-light) 40%,
+      var(--gold-dark) 60%,
+      var(--gold-light) 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 4s linear infinite;
+  }
+
+  @keyframes shimmer {
+    to { background-position: 200% center; }
+  }
+
+  /* Luxury card glass */
+  .glass-card {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--border);
+  }
+
+  .dark .glass-card {
+    background: rgba(22, 22, 22, 0.85);
+  }
+
+  /* Gold divider line */
+  .gold-divider {
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+
+  /* Magnetic hover glow */
+  .gold-glow-hover {
+    transition: box-shadow 0.4s var(--ease-luxury);
+  }
+  .gold-glow-hover:hover {
+    box-shadow: 0 0 40px var(--gold-glow), 0 0 80px var(--gold-glow-sm);
+  }
+
+  /* Noise texture overlay */
+  .noise-overlay::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Marquee animation */
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  .animate-marquee {
+    animation: marquee 28s linear infinite;
+  }
+
+  /* Cursor dot animation */
+  @keyframes fadeInScale {
+    from { opacity: 0; transform: scale(0.8); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+}

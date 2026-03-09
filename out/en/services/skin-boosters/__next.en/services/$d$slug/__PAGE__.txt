@@ -1,0 +1,7 @@
+1:"$Sreact.fragment"
+2:I[32844,["/_next/static/chunks/932a7748766bef81.js","/_next/static/chunks/4a4c56a225fa3835.js","/_next/static/chunks/a8367fc062164b99.js","/_next/static/chunks/0efb5d7c9c54c735.js"],"default"]
+4:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/f551379acc9349e8.js"],"OutletBoundary"]
+5:"$Sreact.suspense"
+0:{"buildId":"y4oZG2kcF2AurB7PkVsPH","rsc":["$","$1","c",{"children":[["$","$L2",null,{"params":"$@3"}],[["$","script","script-0",{"src":"/_next/static/chunks/4a4c56a225fa3835.js","async":true}],["$","script","script-1",{"src":"/_next/static/chunks/a8367fc062164b99.js","async":true}],["$","script","script-2",{"src":"/_next/static/chunks/0efb5d7c9c54c735.js","async":true}]],["$","$L4",null,{"children":["$","$5",null,{"name":"Next.MetadataOutlet","children":"$@6"}]}]]}],"loading":null,"isPartial":false}
+3:{"slug":"skin-boosters"}
+6:null
